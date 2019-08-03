@@ -7,8 +7,13 @@
  *  LICENSE file in the root directory of this source tree. An additional grant
  *  of patent rights can be found in the PATENTS file in the same directory.
  */
+require('@babel/register', {
+  rootMode: 'upward',
+});
 
-require('@babel/polyfill')
+require('@babel/polyfill', {
+  rootMode: 'upward',
+});
 
 const JSDOM = require('jsdom').JSDOM;
 
@@ -61,7 +66,7 @@ const chai = require('chai');
 const chaiSubset = require('chai-subset');
 chai.use(chaiSubset);
 
-process.on('unhandledRejection', (error) => {
+process.on('unhandledRejection', error => {
   console.error('Unhandled Promise Rejection:');
   console.error((error && error.stack) || error);
 });
